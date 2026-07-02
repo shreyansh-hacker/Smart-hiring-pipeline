@@ -1,0 +1,20 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Environments
+.venv/
+venv/
+ENV/
+env/
+
+# Datasets & Output CSVs (Reviewers regenerate these locally)
+candidates.jsonl
+candidates.jsonl.gz
+submission.csv
+
+# OS metadata
+.DS_Store
+Thumbs.db

@@ -1,0 +1,45 @@
+# Redrob Hackathon — Submission Metadata
+team_name: "Zentech"  # Modify if needed
+
+primary_contact:
+  name: "Shreyansh Sharma"
+  email: "<YOUR_REGISTERED_EMAIL>"   # Replace with your registered email
+  phone: "<YOUR_PHONE_NUMBER>"        # Replace with your contact number
+
+team_members:
+  - name: "Shreyansh Sharma"
+    email: "<YOUR_REGISTERED_EMAIL>" # Replace with your email
+    role: "ML Engineer"
+
+github_repo: "https://github.com/shreyansh-hacker/Smart-hiring-pipeline"
+sandbox_link: "https://huggingface.co/spaces/shreyansh-hacker/candidate-ranker" # Replace with your sandbox link
+
+reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
+
+compute:
+  platform: "Local PC"
+  cpu_cores: 8
+  ram_gb: 16
+  python_version: "3.11.0"
+  os: "Windows 11"
+  uses_gpu_for_inference: false
+  has_network_during_ranking: false
+  pre_computation_required: false
+  pre_computation_time_minutes: 0
+
+ai_tools_used:
+  - "Gemini"
+  - "Cursor"
+
+ai_usage_summary: |
+  Used Gemini 3.5 via Antigravity to architect the hybrid scoring model, debug python script configurations, and design the honeypot detection rules. No candidate data was sent to any external API during ranking.
+
+methodology_summary: |
+  A hybrid candidate ranking engine driven by a TF-IDF cosine semantic similarity model, built using scikit-learn, combined with rule-based feature scores (skills, experience, career trajectory, location, notice period, and salary). Includes a strict honeypot filter using contradiction checks (such as salary range mismatches and expert skill duration errors) to disqualify invalid profiles. Applies behavioral engagement scores as a final rank modifier. The system processes 100K candidates under 40 seconds on standard CPU.
+
+declarations:
+  read_submission_spec: true
+  code_is_original_work: true
+  no_collusion: true
+  honeypot_check_done: true
+  reproduction_tested: true
