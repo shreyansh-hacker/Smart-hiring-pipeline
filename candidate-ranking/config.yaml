@@ -1,0 +1,50 @@
+
+# Redrob Candidate Ranking - Configuration File
+
+# Runtime and environment settings
+runtime:
+  # Paths can be overridden by command line arguments
+  default_candidates_path: "candidates.jsonl"
+  default_output_path: "submission.csv"
+  jd_path: "job_description.docx"
+  cache_dir: ".cache"
+  use_cache: true
+  chunk_size: 10000
+  embedding_model: "all-MiniLM-L6-v2"
+
+# Feature toggles
+features:
+  enable_semantic_similarity: true
+  enable_behavioral_signals: true
+  enable_honeypot_detection: true
+  penalize_consulting_only: true
+
+# Hard thresholds for rules and honeypots
+thresholds:
+  ideal_experience_min_years: 5
+  ideal_experience_max_years: 9
+  absolute_min_experience_years: 3
+  absolute_max_experience_years: 15
+  max_notice_period_days_preferred: 30
+  max_notice_period_days_acceptable: 60
+  stale_profile_days: 180  # Penalize if inactive for this many days
+
+# Feature weights for the Hybrid Scoring Engine
+# These are relative weights that determine the final score
+weights:
+  semantic_similarity: 0.15
+  skills_match: 0.25
+  experience_match: 0.15
+  title_and_career_trajectory: 0.15
+  behavioral_engagement: 0.15
+  location_compatibility: 0.05
+  notice_period_compatibility: 0.05
+  salary_compatibility: 0.05
+
+# Penalty multipliers applied to the final score (1.0 = no penalty, 0.0 = disqualify)
+penalties:
+  honeypot_flag: 0.0            # Disqualify completely
+  consulting_only_career: 0.6   # JD explicitly warns against this
+  stale_profile: 0.5            # Not active for > 6 months
+  high_notice_period: 0.8       # > 60 days
+  missing_basic_info: 0.7       # Missing location, summary, etc.
